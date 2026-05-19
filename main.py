@@ -14,3 +14,22 @@ def load_books():
 def save_books(books):
     with open(FILE, "w", encoding="utf-8") as f:
         json.dump(books, f, ensure_ascii=False, indent=2)
+
+def add_book(books):
+    author = input("Автор: ")
+    title = input("Название: ")
+    rating = int(input("Оценка (1-5): "))
+    date = input("Дата прочтения: ")
+
+    # проверка дубликатов
+    for b in books:
+        if b["author"] == author and b["title"] == title:
+            print("Книга уже существует!")
+            return
+
+    books.append({
+        "author": author,
+        "title": title,
+        "rating": rating,
+        "date": date
+    })
