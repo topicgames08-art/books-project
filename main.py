@@ -7,15 +7,15 @@ def main():
 
     while True:
         print("""
-        1. Добавить книгу
-        2. Показать все книги
-        3. Показать среднюю оценку
-        4. Статистика по авторам
-        5. Удалить книгу
-        6. Выход
+        1. Add book
+        2. Show all books
+        3. Show average rating
+        4. Author statistics
+        5. Delete book
+        6. Exit
         """)
 
-        choice = input("Выбор: ")
+        choice = input("Choose: ")
 
         if choice == "1":
             add_book(books)
@@ -51,15 +51,15 @@ def save_books(books):
         json.dump(books, f, ensure_ascii=False, indent=2)
 
 def add_book(books):
-    author = input("Автор: ")
-    title = input("Название: ")
-    rating = int(input("Оценка (1-5): "))
-    date = input("Дата прочтения: ")
+    author = input("Author: ")
+    title = input("Name: ")
+    rating = int(input("Rating (1-5): "))
+    date = input("Date read: ")
 
     # проверка дубликатов
     for b in books:
         if b["author"] == author and b["title"] == title:
-            print("Книга уже существует!")
+            print("Book already exists!")
             return
 
     books.append({
